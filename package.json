@@ -10,13 +10,16 @@
     "test": "node ./test"
   },
   "repository": {
-	  "type": "git",
-	  "url": "git://github.com/agraddy/agraddy.util.bottle.git"
+    "type": "git",
+    "url": "git://github.com/agraddy/agraddy.util.bottle.git"
   },
   "bugs": {
-	  "url": "https://github.com/agraddy/agraddy.util.bottle/issues"
+    "url": "https://github.com/agraddy/agraddy.util.bottle/issues"
   },
   "devDependencies": {
-	  "agraddy.test.tap": "^0.2.0"
+    "agraddy.test.tap": "^0.2.0"
+  },
+  "dependencies": {
+    "agraddy.async.each": "^0.4.0"
   }
 }
