@@ -12,8 +12,10 @@ var server = http.createServer(function(req, res) {
 	var writable;
 	var writable2;
 	var writable3;
+	var writable4;
 	var expected2 = '';
 	var expected3 = '';
+	var expected4 = '';
 
 	if(req.url == '/test/get') {
 		res.end('get');
@@ -109,6 +111,23 @@ var server = http.createServer(function(req, res) {
 		});
 
 		res.end('post3');
+	} else if(req.url == '/test/ssl') {
+		/*
+		writable4 = new stream.Writable();
+		writable4._content = '';
+		writable4._write = function(chunk, encoding, callback) {
+			writable4._content += chunk.toString();
+			callback();
+		};
+
+		expected4 = 'normal=normal';
+
+		req.pipe(writable4).on('finish', function() {
+			!!!tap.!assert.equal(writable4._content, expected4, 'Handle ssl data.');
+		});
+
+		res.end('ssl');
+		*/
 	}
 });
 
@@ -167,8 +186,19 @@ function post3() {
 	bottle.post('http://localhost:' + port + '/test/post3', {normal: 'This is some normal content.', stream: readable}, {type: 'multipart', encoding: 'chunked'}, function(err, res) {
 			tap.assert.equal(res, 'post3', 'POST response working.');
 
+			ssl();
+			});
+}
+
+function ssl() {
+	end();
+/*
+	bottle.post('https://localhost:' + port + '/test/ssl', {normal: 'normal'}, function(err, res) {
+			!!!tap.!assert.equal(res, 'post3', 'POST response working.');
+
 			end();
 			});
+			*/
 }
 
 function end() {
